@@ -23,7 +23,7 @@ const Navbar = () => {
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden rubik text-base font-semibold md:flex items-center gap-10">
             <p className="cursor-pointer">New Drops 🔥</p>
 
             <div className="flex items-center gap-1 cursor-pointer">

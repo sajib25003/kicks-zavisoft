@@ -8,6 +8,9 @@ const Layout = () => {
         <Navbar />
       </div>
       <Outlet />
+      <p className="open-sans text-base font-normal text-[#232321] text-center">
+        &copy; All rights reserved
+      </p>
     </div>
   );
 };
