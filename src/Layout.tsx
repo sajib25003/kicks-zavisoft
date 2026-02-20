@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const Layout = () => {
   return (
@@ -8,9 +9,12 @@ const Layout = () => {
         <Navbar />
       </div>
       <Outlet />
-      <p className="open-sans text-base font-normal text-[#232321] text-center">
-        &copy; All rights reserved
-      </p>
+      <Footer />
+      <div className="py-6 md:py-4.5">
+        <p className="open-sans text-base font-normal text-[#232321] text-center ">
+          &copy; All rights reserved
+        </p>
+      </div>
     </div>
   );
 };
