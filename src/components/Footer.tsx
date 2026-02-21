@@ -83,12 +83,12 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#232321] rounded-3xl md:rounded-[48px] overflow-hidden">
-        <div className="p-4 md:p-10 flex flex-col md:flex-row gap-30.5">
+        <div className="p-4 md:p-10 flex flex-col md:flex-row gap-10 md:gap-30.5">
           <div>
-            <h2 className="rubik text-4xl font-semibold text-[#FFA52F] mb-2">
+            <h2 className="rubik text-2xl md:text-4xl font-semibold text-[#FFA52F] mb-2">
               About Us
             </h2>
-            <p className="open-sans text-xl font-semibold leading-7.75 ">
+            <p className="open-sans text-base md:text-xl font-semibold leading-7.75 ">
               We are the biggest hyperstore in the universe.{" "}
               <br className="hidden md:flex" />
               We got you all cover with our exclusive collections and latest
@@ -96,7 +96,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h2 className="rubik text-2xl font-semibold text-[#FFA52F] mb-4">
+            <h2 className="rubik text-xl md:text-2xl font-semibold text-[#FFA52F] mb-4">
               Categories
             </h2>
             <div className="space-y-2 flex flex-col">
@@ -104,7 +104,7 @@ const Footer = () => {
                 <Link
                   key={item}
                   to={item.toLowerCase()}
-                  className="open-sans text-xl font-semibold hover:cursor-pointer hover:underline"
+                  className="open-sans text-base md:text-xl font-semibold hover:cursor-pointer hover:underline"
                 >
                   {item}
                 </Link>
@@ -112,7 +112,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h2 className="rubik text-2xl font-semibold text-[#FFA52F] mb-4">
+            <h2 className="rubik text-xl md:text-2xl font-semibold text-[#FFA52F] mb-4">
               Company
             </h2>
             <div className="space-y-2 flex flex-col">
@@ -120,7 +120,7 @@ const Footer = () => {
                 <Link
                   key={item}
                   to={`/${item.toLowerCase()}`}
-                  className="open-sans text-xl font-semibold hover:cursor-pointer hover:underline"
+                  className="open-sans text-base md:text-xl font-semibold hover:cursor-pointer hover:underline"
                 >
                   {item}
                 </Link>
@@ -128,7 +128,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h2 className="rubik text-2xl font-semibold text-[#FFA52F] mb-4">
+            <h2 className="rubik text-xl md:text-2xl font-semibold text-[#FFA52F] mb-4">
               Follow us
             </h2>
             <div className="flex gap-5">
@@ -142,7 +142,7 @@ const Footer = () => {
                   <img
                     src={item.img}
                     alt={`${item.name} icon`}
-                    className="w-8 aspect-square hover:scale-120 "
+                    className="w-6 md:w-8 aspect-square hover:scale-120 "
                   />
                 </a>
               ))}
