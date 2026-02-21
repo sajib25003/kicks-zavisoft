@@ -1,5 +1,6 @@
 import "./App.css";
-import Banner from "./components/Banner";
+import Banner from "./components/landing_page/Banner";
+import Reviews from "./components/landing_page/Reviews";
 
 function App() {
   return (
@@ -9,8 +10,11 @@ function App() {
           DO IT <span className="text-[#4A69E2]">RIGHT</span>
         </p>
       </div>
-      <div className="py-6 px-4 lg:px-15">
+      <div className="pt-6 px-4 lg:px-15">
         <Banner />
+      </div>
+      <div className="py-5 md:py-32 px-4 lg:px-15">
+        <Reviews />
       </div>
     </div>
   );

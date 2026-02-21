@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import footer_img from "../assets/icons/Logo.svg";
-import facebook_img from "../assets/icons/facebook.svg";
-import instagram_img from "../assets/icons/instagram.svg";
-import twitter_img from "../assets/icons/twitter.svg";
-import tiktok_img from "../assets/icons/tiktok.svg";
-import footer_logo_white from "../assets/footer_logo_white.png";
-import add_circle from "../assets/icons/Add_circle.svg";
+import footer_img from "../../assets/icons/Logo.svg";
+import facebook_img from "../../assets/icons/facebook.svg";
+import instagram_img from "../../assets/icons/instagram.svg";
+import twitter_img from "../../assets/icons/twitter.svg";
+import tiktok_img from "../../assets/icons/tiktok.svg";
+import footer_logo_white from "../../assets/footer_logo_white.png";
+import add_circle from "../../assets/icons/Add_circle.svg";
 
 const Footer = () => {
   const categories = [

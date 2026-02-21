@@ -1,6 +1,6 @@
-import banner_img from "../assets/banner.jpg";
-import thumb1 from "../assets/thumb1.jpg"; // ছোট image গুলো import করো
-import thumb2 from "../assets/thumb2.jpg";
+import banner_img from "../../assets/banner.jpg";
+import thumb1 from "../../assets/thumb1.jpg"; // ছোট image গুলো import করো
+import thumb2 from "../../assets/thumb2.jpg";
 
 const Banner = () => {
   return (

@@ -4,3 +4,11 @@ export interface IPost {
   title: string;
   body: string;
 }
+
+export interface IReview {
+  title: string;
+  description: string;
+  rating: number;
+  img: string;
+  thumbnail: string;
+}

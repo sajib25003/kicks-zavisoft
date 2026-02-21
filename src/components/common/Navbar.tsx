@@ -1,8 +1,8 @@
 import { useState } from "react";
-import logo from "../assets/Logo.svg";
-import down_icon from "../assets/icons/caret_down.svg";
-import search_icon from "../assets/icons/Search.svg";
-import user_icon from "../assets/icons/User.svg";
+import logo from "../../assets/Logo.svg";
+import down_icon from "../../assets/icons/caret_down.svg";
+import search_icon from "../../assets/icons/Search.svg";
+import user_icon from "../../assets/icons/User.svg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
