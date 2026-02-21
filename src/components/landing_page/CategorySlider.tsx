@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-//@ts-expect-error: no error
 import "swiper/css";
-//@ts-expect-error: no error
 import "swiper/css/pagination";
 
 import { useGet } from "../../custom-hooks/apiHooks";

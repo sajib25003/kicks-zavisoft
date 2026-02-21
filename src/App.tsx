@@ -1,6 +1,7 @@
 import "./App.css";
 import Banner from "./components/landing_page/Banner";
 import CategoriesSlider from "./components/landing_page/CategorySlider";
+import Products from "./components/landing_page/Products";
 import Reviews from "./components/landing_page/Reviews";
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
       </div>
       <div className="pt-6 px-4 lg:px-15">
         <Banner />
+      </div>
+      <div className="px-4.5 lg:px-15 pt-5 md:pt-22.5 ">
+        <Products />
       </div>
       <div className="pt-5 md:pt-32 ">
         <CategoriesSlider />
