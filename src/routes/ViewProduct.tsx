@@ -3,6 +3,7 @@ import { useGet } from "../custom-hooks/apiHooks";
 import { IProduct } from "../types/types";
 import { useState } from "react";
 import heart_icon from "../assets/icons/heart.svg";
+import RelatedProducts from "../components/view_product/RelatedProducts";
 
 const ViewProduct = () => {
   const { id } = useParams();
@@ -167,6 +168,7 @@ const ViewProduct = () => {
           </div>
         </div>
       </div>
+      <RelatedProducts />
     </div>
   );
 };
