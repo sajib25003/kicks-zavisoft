@@ -7,13 +7,21 @@ import { IProduct } from "../../types/types";
 import { useGet } from "../../custom-hooks/apiHooks";
 import ProductCard from "../common/ProductCard";
 import { useState } from "react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 export default function RelatedProducts() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const { data: products, isLoading } = useGet<IProduct[]>(
     ["products"],
     "/products",
   );
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [firstIndex, setFirstIndex] = useState(0);
+  const groupSize = 4;
+  const totalGroups = products ? Math.ceil(products.length / groupSize) : 0;
+  const currentGroup = firstIndex / groupSize;
+  const isPrevDisabled = currentGroup === 0;
+  const isNextDisabled = currentGroup === totalGroups - 2;
+
   if (isLoading) return <div>Loading...</div>;
   return (
     <section className=" py-16 px-6 md:px-16 ">
@@ -25,18 +33,27 @@ export default function RelatedProducts() {
 
         {/* Arrows */}
         <div className="flex gap-3">
-          <div className="related-prev w-10 h-10 rounded-lg bg-gray-400 flex items-center justify-center cursor-pointer">
-            ‹
+          <div
+            className={`related-prev w-10 h-10 rounded-lg flex items-center justify-center
+      ${isPrevDisabled ? "bg-gray-300 cursor-not-allowed" : "bg-[#232321] cursor-pointer"}
+    `}
+          >
+            <RiArrowLeftSLine className="text-white text-2xl" />
           </div>
-          <div className="related-next w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center cursor-pointer">
-            ›
+
+          <div
+            className={`related-next w-10 h-10 rounded-lg flex items-center justify-center
+      ${isNextDisabled ? "bg-gray-300 cursor-not-allowed" : "bg-[#232321] cursor-pointer"}
+    `}
+          >
+            <RiArrowRightSLine className="text-white text-2xl" />
           </div>
         </div>
       </div>
 
       {/* Slider */}
       <Swiper
-        className="h-110"
+        className="h-110 grid grid-cols-2 md:grid-cols-4"
         modules={[Navigation, Pagination]}
         navigation={{
           prevEl: ".related-prev",
@@ -46,12 +63,19 @@ export default function RelatedProducts() {
         //   clickable: true,
         // }}
         spaceBetween={24}
+        slidesPerGroup={4}
         onSlideChange={(swiper) => {
-          setActiveIndex(swiper.realIndex % 4);
+          const groupSize = 4;
+          const realIndex = swiper.realIndex;
+
+          const firstIndex = Math.floor(realIndex / groupSize) * groupSize;
+
+          setActiveIndex(realIndex % 4);
+          setFirstIndex(firstIndex);
         }}
         breakpoints={{
-          0: { slidesPerView: 1.2 },
-          640: { slidesPerView: 2 },
+          0: { slidesPerView: 2 },
+          640: { slidesPerView: 4 },
           1024: { slidesPerView: 4 },
         }}
       >

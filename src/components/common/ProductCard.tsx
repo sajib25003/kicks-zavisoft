@@ -8,7 +8,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <img
           src={product.images[0]}
           alt={product.title}
-          className="rounded-2xl md:rounded-[28px] p-2 bg-[#FAFAFA] min-h-65 aspect-square "
+          className="rounded-2xl md:rounded-[28px] p-2 bg-[#FAFAFA] h-45 md:min-h-65 aspect-square "
         />
         <div className="text-xs rubik font-semibold bg-[#4A69E2] px-3 py-1.75 md:px-4 md:py-3 rounded-tl-2xl rounded-br-[20px] md:rounded-tl-3xl md:rounded-br-3xl absolute top-2 left-2">
           New

@@ -78,7 +78,7 @@ const Footer = () => {
           <img
             src={add_circle}
             alt="add circle icon"
-            className="absolute h-[17.5px] aspect-square md:h-8 -top-3.5 md:-top-6 left-46 md:right-30"
+            className="absolute h-[17.5px] aspect-square md:h-8 -top-3.5 md:-top-6 left-46 md:left-117"
           />
         </div>
       </div>
