@@ -3,6 +3,7 @@ import logo from "../../assets/Logo.svg";
 import down_icon from "../../assets/icons/caret_down.svg";
 import search_icon from "../../assets/icons/Search.svg";
 import user_icon from "../../assets/icons/User.svg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +40,9 @@ const Navbar = () => {
         </div>
 
         {/* ✅ Center Logo */}
-        <div>
+        <Link to="/" className="hover:cursor-pointer">
           <img src={logo} alt="kick-logo" className="h-6 md:h-8" />
-        </div>
+        </Link>
 
         {/* ✅ Right Section */}
         <div className="flex items-center gap-2.25 md:gap-10">
