@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import { useGet } from "../../custom-hooks/apiHooks";
 import { IProduct } from "../../types/types";
 import ProductCard from "../common/ProductCard";
+import LoadingSpinner from "../common/LoadingSpinner";
+import { toast } from "react-toastify";
 
 const Products = () => {
-  const { data: products, isLoading } = useGet<IProduct[]>(
-    ["products"],
-    "/products",
-  );
-  if (isLoading) return <div>Loading...</div>;
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useGet<IProduct[]>(["products"], "/products");
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) {
+    toast.error("Data Fetching Failed!");
+  }
 
   return (
     <div>
@@ -25,12 +31,18 @@ const Products = () => {
           Shop New Drops
         </Link>
       </div>
-      <div className=" pt-8 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-4">
-        {Array.isArray(products) &&
-          products
-            .slice(0, 4)
-            .map((item) => <ProductCard key={item.id} product={item} />)}
-      </div>
+      {Array.isArray(products) && products.length === 0 ? (
+        <p className="text-center text-red-500 text-2xl font-bold">
+          No product available
+        </p>
+      ) : (
+        <div className=" pt-8 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-4">
+          {Array.isArray(products) &&
+            products
+              .slice(0, 4)
+              .map((item) => <ProductCard key={item.id} product={item} />)}
+        </div>
+      )}
     </div>
   );
 };

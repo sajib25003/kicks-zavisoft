@@ -5,18 +5,24 @@ import "swiper/css";
 import { useGet } from "../../custom-hooks/apiHooks";
 import type { ICategory } from "../../types/types";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import LoadingSpinner from "../common/LoadingSpinner";
+import { toast } from "react-toastify";
 
 export default function CategoriesSlider() {
-  const { data: categories, isLoading } = useGet<ICategory[]>(
-    ["categories"],
-    "/categories",
-  );
+  const {
+    data: categories,
+    isLoading,
+    isError,
+  } = useGet<ICategory[]>(["categories"], "/categories");
 
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) {
+    toast.error("Data Fetching Failed!");
+  }
 
   return (
     <div className="bg-[#232321] p-6 md:pl-15 md:pt-16">
@@ -56,44 +62,50 @@ export default function CategoriesSlider() {
         </div>
       </div>
 
-      <div className="bg-[#ECEEF0] rounded-tl-[64px] overflow-hidden">
-        <Swiper
-          slidesPerView={2}
-          spaceBetween={0}
-          onSwiper={(s) => {
-            setSwiper(s);
-            setIsBeginning(s.isBeginning);
-            setIsEnd(s.isEnd);
-          }}
-          onSlideChange={(s) => {
-            setIsBeginning(s.isBeginning);
-            setIsEnd(s.isEnd);
-          }}
-        >
-          {Array.isArray(categories) &&
-            categories.map((item) => (
-              <SwiperSlide key={item.id}>
-                <div className="relative hover:shadow-xl transition-all duration-300 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    loading="lazy"
-                    className="w-full object-cover bg-[#F6F6F6]"
-                  />
+      {Array.isArray(categories) && categories.length === 0 ? (
+        <p className="text-center text-red-500 text-2xl font-bold">
+          No category available
+        </p>
+      ) : (
+        <div className="bg-[#ECEEF0] rounded-tl-[64px] overflow-hidden">
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={0}
+            onSwiper={(s) => {
+              setSwiper(s);
+              setIsBeginning(s.isBeginning);
+              setIsEnd(s.isEnd);
+            }}
+            onSlideChange={(s) => {
+              setIsBeginning(s.isBeginning);
+              setIsEnd(s.isEnd);
+            }}
+          >
+            {Array.isArray(categories) &&
+              categories.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div className="relative hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      className="w-full object-cover bg-[#F6F6F6]"
+                    />
 
-                  <div className="my-4 md:mt-6 px-4 md:px-16 md:mb-7.5 flex justify-between items-center text-black w-full gap-4">
-                    <h3 className="text-xl md:text-2xl font-semibold">
-                      {item.name}
-                    </h3>
-                    <div className="bg-[#232321] text-white w-6 md:w-8 aspect-square rounded-lg flex justify-center items-center">
-                      ↗
+                    <div className="my-4 md:mt-6 px-4 md:px-16 md:mb-7.5 flex justify-between items-center text-black w-full gap-4">
+                      <h3 className="text-xl md:text-2xl font-semibold">
+                        {item.name}
+                      </h3>
+                      <div className="bg-[#232321] text-white w-6 md:w-8 aspect-square rounded-lg flex justify-center items-center">
+                        ↗
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
+      )}
     </div>
   );
 }

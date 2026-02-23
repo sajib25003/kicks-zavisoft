@@ -16,7 +16,7 @@ function App() {
       <div className="pt-6 px-4 lg:px-15">
         <Banner />
       </div>
-      <div className="px-4.5 lg:px-15 pt-5 md:pt-22.5 ">
+      <div id="new_drops" className="px-4.5 lg:px-15 pt-5 md:pt-22.5 ">
         <Products />
       </div>
       <div className="pt-5 md:pt-32 block md:hidden ">

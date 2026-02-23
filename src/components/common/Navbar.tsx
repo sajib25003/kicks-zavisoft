@@ -4,6 +4,7 @@ import down_icon from "../../assets/icons/caret_down.svg";
 import search_icon from "../../assets/icons/Search.svg";
 import user_icon from "../../assets/icons/User.svg";
 import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,9 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden rubik text-base font-semibold md:flex items-center gap-10">
-            <p className="cursor-pointer">New Drops 🔥</p>
+            <ScrollLink to="new_drops" smooth={true} duration={500}>
+              <span className="hover:cursor-pointer">New Drops 🔥</span>
+            </ScrollLink>
 
             <div className="flex items-center gap-1 cursor-pointer">
               <p>Men</p>
