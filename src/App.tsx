@@ -1,5 +1,6 @@
 import "./App.css";
 import Banner from "./components/landing_page/Banner";
+import CategoriesMobile from "./components/landing_page/CategoriesMobile";
 import CategoriesSlider from "./components/landing_page/CategorySlider";
 import Products from "./components/landing_page/Products";
 import Reviews from "./components/landing_page/Reviews";
@@ -18,7 +19,10 @@ function App() {
       <div className="px-4.5 lg:px-15 pt-5 md:pt-22.5 ">
         <Products />
       </div>
-      <div className="pt-5 md:pt-32 ">
+      <div className="pt-5 md:pt-32 block md:hidden ">
+        <CategoriesMobile />
+      </div>
+      <div className="pt-5 md:pt-32 hidden md:block ">
         <CategoriesSlider />
       </div>
       <div className="py-5 md:py-32 px-4 lg:px-15">

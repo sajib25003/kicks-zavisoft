@@ -5,6 +5,7 @@ import { useState } from "react";
 import heart_icon from "../assets/icons/heart.svg";
 import RelatedProducts from "../components/view_product/RelatedProducts";
 import RelatedProductsMobile from "../components/view_product/RelatedProductsMobile";
+import ViewProductImageSliderMobile from "../components/view_product/ViewProductImageSliderMobile";
 
 const ViewProduct = () => {
   const { id } = useParams();
@@ -48,19 +49,26 @@ const ViewProduct = () => {
 
   return (
     <div className="mx-4.5 lg:mx-15 my-5 md:my-8 text-black">
+      {/* {window.innerWidth <= 640 ? (
+        <div>Under Construction</div>
+      ) : ( */}
       <div className="flex flex-col md:flex-row w-full gap-4">
-        <div className="w-2/3  rounded-[48px] grid grid-cols-2 gap-4 overflow-hidden">
-          {product &&
-            images.map((item, idx) => (
-              <img
-                key={idx}
-                src={item}
-                alt={product?.slug}
-                className="h-127.5 w-full"
-              />
-            ))}
-        </div>
-        <div className="w-1/3 ">
+        {window.innerWidth <= 640 ? (
+          <ViewProductImageSliderMobile images={images} />
+        ) : (
+          <div className="w-2/3  rounded-[48px] grid grid-cols-2 gap-4 overflow-hidden">
+            {product &&
+              images.map((item, idx) => (
+                <img
+                  key={idx}
+                  src={item}
+                  alt={product?.slug}
+                  className="h-127.5 w-full"
+                />
+              ))}
+          </div>
+        )}
+        <div className="md:w-1/3 ">
           <button className="bg-[#4A69E2] rubik text-xs font-semibold text-white px-4 py-3 rounded-xl ">
             New Release
           </button>
@@ -169,7 +177,7 @@ const ViewProduct = () => {
           </div>
         </div>
       </div>
-
+      {/* )} */}
       {window.innerWidth <= 640 ? (
         <RelatedProductsMobile />
       ) : (

@@ -24,7 +24,7 @@ export default function RelatedProductsMobile() {
   );
 
   return (
-    <section className="bg-[#ECECEC] py-12 px-4">
+    <section className=" py-12 px-4">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-semibold rubik text-[#232321]">
@@ -56,14 +56,12 @@ export default function RelatedProductsMobile() {
         </div>
       </div>
 
-      {/* Grid 2x2 */}
       <div className="grid grid-cols-2 gap-6">
         {paginatedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* Always 4 Indicators */}
       <div className="flex justify-center gap-1 mt-8">
         {Array.from({ length: 4 }).map((_, index) => (
           <div
