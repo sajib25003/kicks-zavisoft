@@ -33,3 +33,18 @@ export interface IProduct {
   creationAt: string;
   updatedAt: string;
 }
+
+export interface CartItem {
+  productId: string;
+  image: string;
+  title: string;
+  description: string;
+  size: string;
+  color: string;
+  quantity: number;
+  isFavorite: boolean;
+}
+
+export interface CartState {
+  items: CartItem[];
+}

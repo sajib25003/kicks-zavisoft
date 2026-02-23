@@ -6,9 +6,12 @@ import user_icon from "../../assets/icons/User.svg";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { Tooltip } from "react-tooltip";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const totalItems = useSelector((state: RootState) => state.cart.items.length);
 
   return (
     <div className="bg-[#FAFAFA] rounded-xl md:rounded-3xl px-6 py-4 md:p-8 text-black">
@@ -70,7 +73,7 @@ const Navbar = () => {
               data-tooltip-content="Cart"
               className="font-semibold text-[#232321] text-sm md:text-base"
             >
-              0
+              {totalItems}
             </Link>
           </div>
         </div>

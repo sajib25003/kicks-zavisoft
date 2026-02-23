@@ -1,19 +1,25 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useGet } from "../custom-hooks/apiHooks";
 import { IProduct } from "../types/types";
 import { useState } from "react";
-import heart_icon from "../assets/icons/heart.svg";
+// import heart_icon from "../assets/icons/heart.svg";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import RelatedProducts from "../components/view_product/RelatedProducts";
 import RelatedProductsMobile from "../components/view_product/RelatedProductsMobile";
 import ViewProductImageSliderMobile from "../components/view_product/ViewProductImageSliderMobile";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { toggleFavorite } from "../redux/features/favoritesSlice";
+import { addToCart } from "../redux/features/cartSlice";
 
 const ViewProduct = () => {
   const { id } = useParams();
   const [selected, setSelected] = useState("blue");
   const [size, setSize] = useState("XS");
+  const navigate = useNavigate();
   const {
     data: product,
     isLoading,
@@ -21,6 +27,10 @@ const ViewProduct = () => {
   } = useGet<IProduct>(["product", `${id}`], `/products/${id}`);
 
   const images = Array.isArray(product?.images) ? product.images : [];
+  const dispatch = useDispatch();
+  const favorites = useSelector((state: RootState) => state.favorites.items);
+
+  const isFavorite = favorites.includes(Number(id));
 
   const sizeList: { size: string; available: boolean }[] = [
     {
@@ -46,6 +56,42 @@ const ViewProduct = () => {
     { size: "2XL", available: false },
     { size: "3XL", available: true },
   ];
+
+  if (!product) return null;
+  //add to card : using redux store
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        productId: product.id.toString(),
+        image: product.images[0],
+        title: product.title,
+        description: product.description,
+        size: size,
+        color: selected,
+        quantity: 1,
+        isFavorite: favorites.includes(product.id),
+      }),
+    );
+  };
+  //buy now: add to cart and then navigate to cart page
+  const handleBuyNow = () => {
+    if (!product) return;
+
+    dispatch(
+      addToCart({
+        productId: product.id.toString(),
+        image: product.images[0],
+        title: product.title,
+        description: product.description,
+        size: size,
+        color: selected,
+        quantity: 1,
+        isFavorite: favorites.includes(product.id),
+      }),
+    );
+
+    navigate("/cart");
+  };
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -95,16 +141,16 @@ const ViewProduct = () => {
               <div className="flex gap-6">
                 <button
                   onClick={() => setSelected("blue")}
-                  className={`w-12 aspect-square rounded-full flex items-center justify-center border-4 transition-all duration-200
+                  className={`w-12 hover:cursor-pointer aspect-square rounded-full flex items-center justify-center border-4 transition-all duration-200
         ${selected === "blue" ? "border-black p-2" : "border-transparent"}`}
                 >
-                  <div className="w-10 aspect-square rounded-full bg-[#24324A]" />
+                  <div className="w-10 aspect-square rounded-full bg-[#2b446f]" />
                 </button>
 
                 <button
-                  onClick={() => setSelected("green")}
-                  className={`w-12 aspect-square rounded-full flex items-center justify-center border-4 transition-all duration-200
-        ${selected === "green" ? "border-black p-2 " : "border-transparent"}`}
+                  onClick={() => setSelected("olive")}
+                  className={`hover:cursor-pointer w-12 aspect-square rounded-full flex items-center justify-center border-4 transition-all duration-200
+        ${selected === "olive" ? "border-black p-2 " : "border-transparent"}`}
                 >
                   <div className="w-10 aspect-square rounded-full bg-[#7C8B78]" />
                 </button>
@@ -148,22 +194,30 @@ const ViewProduct = () => {
             </div>
             <div className="my-8">
               <div className=" flex gap-2">
-                <button className="bg-[#232321] rounded-lg uppercase rubik font-medium text-sm h-12  w-full text-white">
+                <button
+                  onClick={handleAddToCart}
+                  className="hover:cursor-pointer bg-[#232321] rounded-lg uppercase rubik font-medium text-sm h-12  w-full text-white"
+                >
                   Add to Cart
                 </button>
                 <button
+                  onClick={() => dispatch(toggleFavorite(product.id))}
                   data-tooltip-id="my-tooltip"
-                  data-tooltip-content="Add to Favorites"
-                  className="w-14 aspect-square bg-[#232321] rounded-lg flex justify-center items-center"
+                  data-tooltip-place="top-end"
+                  data-tooltip-content={`${isFavorite ? "Remove from Favorites" : "Add to Favorites"}`}
+                  className="w-14 hover:cursor-pointer text-xl aspect-square bg-[#232321] rounded-lg flex justify-center items-center"
                 >
-                  <img
-                    src={heart_icon}
-                    alt="heart icon"
-                    className="w-6 aspect-square"
-                  />
+                  {isFavorite ? (
+                    <FaHeart className="text-red-500" />
+                  ) : (
+                    <FaRegHeart className="text-gray-400" />
+                  )}
                 </button>
               </div>
-              <button className="uppercase bg-[#4A69E2] rubik text-sm font-medium text-white px-4 py-2 rounded-lg w-full mt-2">
+              <button
+                onClick={handleBuyNow}
+                className="hover:cursor-pointer uppercase bg-[#4A69E2] rubik text-sm font-medium text-white px-4 py-2 rounded-lg w-full mt-2"
+              >
                 Buy It Now
               </button>
             </div>

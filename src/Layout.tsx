@@ -2,10 +2,12 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import { Bounce, ToastContainer } from "react-toastify";
+import ScrollToTop from "./lib/ScrollToTop";
 
 const Layout = () => {
   return (
     <div className="min-h-screen bg-[#E7E7E3] max-w-360 mx-auto">
+      <ScrollToTop />
       <div className="pt-8 px-4 lg:px-15">
         <Navbar />
       </div>
