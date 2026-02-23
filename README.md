@@ -1,5 +1,13 @@
 # KICKS - ZAVISOFT
 
+---
+
+## Live URL
+
+[Visit the Live Site](https://kicks-zavisoft-nine.vercel.app)
+
+---
+
 ## Overview
 
 This project is a modern web application built using ReactJS. It provides a responsive, fast, and interactive user interface with smooth data handling and state management. The project demonstrates the use of Redux for state management, Axios for API requests, and Tailwind CSS for styling.
@@ -62,12 +70,6 @@ yarn build
 ```bash
 vercel --prod
 ```
-
----
-
-## Live URL
-
-[Visit the Live Site](https://your-live-site-url.com)
 
 ---
 
