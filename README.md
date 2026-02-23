@@ -27,6 +27,20 @@ This project is a modern web application built using ReactJS. It provides a resp
 
 ---
 
+---
+
+## Notes
+
+- 1: Redux Store has been used for cart and favorite.
+- 2: In some cases, I did not maintain pixel perfect design as by eye-sight it looked not perfect.
+- 3: DaisyUi is installed but I have not used it as the design is best suit for custom css.
+- 4: It could have been developed using NextJs which is my favorite but the present design demands using ReactJs.
+- 4: I did not use RTK Query as there is only GET api to integrate.
+
+---
+
+---
+
 ## Setup
 
 1. **Clone the repository**
