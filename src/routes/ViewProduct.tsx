@@ -73,6 +73,7 @@ const ViewProduct = () => {
         isFavorite: favorites.includes(product.id),
       }),
     );
+    toast.success("Added to Cart.");
   };
   //buy now: add to cart and then navigate to cart page
   const handleBuyNow = () => {
@@ -92,7 +93,8 @@ const ViewProduct = () => {
       }),
     );
 
-    navigate("/cart");
+    toast.success("Added to Cart.");
+    setTimeout(() => navigate("/cart"), 1500);
   };
 
   if (isLoading) {

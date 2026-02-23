@@ -25,7 +25,7 @@ const CartDetails = () => {
         {cart.items.map((item) => (
           <div
             key={item.productId}
-            className="flex gap-6 mb-10 shadow-lg rounded-b-lg "
+            className="flex gap-6 mb-4 pb-4 border-b border-gray-200 "
           >
             <div className="rounded-3xl overflow-hidden h-39.25 w-39.25 md:h-65 md:w-65 aspect-square shrink-0">
               <img
