@@ -3,12 +3,12 @@ import { IProduct } from "../../types/types";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   return (
-    <div className="flex flex-col h-full">
-      <div className="relative">
+    <div className="flex flex-col  h-full">
+      <div className="relative  mx-auto">
         <img
           src={product.images[0]}
           alt={product.title}
-          className="rounded-2xl md:rounded-[28px] p-2 bg-[#FAFAFA] h-45 md:min-h-65 aspect-square "
+          className="rounded-2xl md:rounded-[28px] p-2 bg-[#FAFAFA] h-45 md:h-77 aspect-square object-cover "
         />
         <div className="text-xs rubik font-semibold text-white bg-[#4A69E2] px-3 py-1.75 md:px-4 md:py-3 rounded-tl-2xl rounded-br-[20px] md:rounded-tl-3xl md:rounded-br-3xl absolute top-2 left-2">
           New

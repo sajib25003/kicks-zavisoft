@@ -38,6 +38,7 @@ export interface CartItem {
   productId: string;
   image: string;
   title: string;
+  price: number;
   description: string;
   size: string;
   color: string;

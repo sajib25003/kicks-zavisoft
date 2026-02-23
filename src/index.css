@@ -23,3 +23,37 @@
   display: flex;
   justify-content: center;
 } */
+
+.truncate-wrapper {
+  position: relative;
+  max-width: 100%;
+}
+
+.truncate-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  /* width: 280px; */
+}
+
+.full-text {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #2e2d2d;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: normal;
+  width: max-content;
+  max-width: 250%;
+  z-index: 100;
+}
+
+.truncate-wrapper:hover .full-text {
+  display: block;
+}
