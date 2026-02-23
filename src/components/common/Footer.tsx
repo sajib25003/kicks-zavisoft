@@ -69,7 +69,7 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="relative md:flex-1 md:flex md:justify-center md:items-center w-full">
+        <div className="relative mb-10 md:mb-0 md:flex-1 md:flex md:justify-center md:items-center w-full">
           <img
             src={footer_logo_white}
             alt="blue section logo"

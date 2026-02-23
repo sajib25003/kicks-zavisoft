@@ -31,7 +31,7 @@ export default function CategoriesMobile() {
   }
 
   return (
-    <div className="bg-[#232321] pt-6">
+    <div className="bg-[#232321] px-4 py-6">
       <div className="flex justify-between items-center px-4 mb-6">
         <h2 className="text-white text-2xl font-semibold">Categories</h2>
 
@@ -63,7 +63,7 @@ export default function CategoriesMobile() {
           No category available
         </p>
       ) : (
-        <div className="bg-[#ECEEF0] rounded-tl-[40px] overflow-hidden">
+        <div className="bg-[#ECEEF0] rounded-tl-[40px] overflow-hidden ">
           <Swiper
             slidesPerView={1}
             onSwiper={(s) => {
@@ -85,7 +85,7 @@ export default function CategoriesMobile() {
                         src={item.image}
                         alt={item.name}
                         loading="lazy"
-                        className="w-full object-cover"
+                        className="w-full object-cover min-h-100 bg-gray-300"
                       />
 
                       <div className="px-4 py-6 flex justify-between items-center">

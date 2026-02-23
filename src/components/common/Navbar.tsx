@@ -5,6 +5,7 @@ import search_icon from "../../assets/icons/Search.svg";
 import user_icon from "../../assets/icons/User.svg";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,9 +64,14 @@ const Navbar = () => {
           />
 
           <div className="rounded-full bg-[#FFA52F] h-7 w-7 md:h-8 md:w-8 flex justify-center items-center">
-            <p className="font-semibold text-[#232321] text-sm md:text-base">
+            <Link
+              to="/cart"
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Cart"
+              className="font-semibold text-[#232321] text-sm md:text-base"
+            >
               0
-            </p>
+            </Link>
           </div>
         </div>
       </div>
@@ -78,6 +84,7 @@ const Navbar = () => {
           <p className="cursor-pointer">Women</p>
         </div>
       )}
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };

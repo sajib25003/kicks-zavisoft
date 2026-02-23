@@ -1,13 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import { useGet } from "../custom-hooks/apiHooks";
 import { IProduct } from "../types/types";
-import {  useState } from "react";
+import { useState } from "react";
 import heart_icon from "../assets/icons/heart.svg";
 import RelatedProducts from "../components/view_product/RelatedProducts";
 import RelatedProductsMobile from "../components/view_product/RelatedProductsMobile";
 import ViewProductImageSliderMobile from "../components/view_product/ViewProductImageSliderMobile";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 
 const ViewProduct = () => {
   const { id } = useParams();
@@ -150,8 +151,16 @@ const ViewProduct = () => {
                 <button className="bg-[#232321] rounded-lg uppercase rubik font-medium text-sm h-12  w-full text-white">
                   Add to Cart
                 </button>
-                <button className="w-12 aspect-square bg-[#232321] rounded-lg flex justify-center items-center">
-                  <img src={heart_icon} alt="heart icon" />
+                <button
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Add to Favorites"
+                  className="w-14 aspect-square bg-[#232321] rounded-lg flex justify-center items-center"
+                >
+                  <img
+                    src={heart_icon}
+                    alt="heart icon"
+                    className="w-6 aspect-square"
+                  />
                 </button>
               </div>
               <button className="uppercase bg-[#4A69E2] rubik text-sm font-medium text-white px-4 py-2 rounded-lg w-full mt-2">
@@ -188,6 +197,7 @@ const ViewProduct = () => {
       ) : (
         <RelatedProducts />
       )}
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };

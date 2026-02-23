@@ -10,7 +10,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           alt={product.title}
           className="rounded-2xl md:rounded-[28px] p-2 bg-[#FAFAFA] h-45 md:min-h-65 aspect-square "
         />
-        <div className="text-xs rubik font-semibold bg-[#4A69E2] px-3 py-1.75 md:px-4 md:py-3 rounded-tl-2xl rounded-br-[20px] md:rounded-tl-3xl md:rounded-br-3xl absolute top-2 left-2">
+        <div className="text-xs rubik font-semibold text-white bg-[#4A69E2] px-3 py-1.75 md:px-4 md:py-3 rounded-tl-2xl rounded-br-[20px] md:rounded-tl-3xl md:rounded-br-3xl absolute top-2 left-2">
           New
         </div>
       </div>
@@ -22,7 +22,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </div>
         <Link
           to={`/view-product/${product.id}`}
-          className=" bg-[#232321] rounded-lg uppercase mt-4 py-2 px-4 text-white text-xs md:text-[14px] rubik font-medium w-full text-center"
+          className=" bg-[#232321] rounded-lg uppercase mt-4 py-4 md:py-3 px-4 text-white text-xs md:text-[14px] rubik font-medium w-full text-center"
         >
           View Product -{" "}
           <span className="text-[#FFA52F]"> ${product.price}</span>
